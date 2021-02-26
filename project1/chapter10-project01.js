@@ -8,5 +8,6 @@ $(document).ready(function()
       var src = $(this).attr("src"); 
       var random = src.replace("small","medium");
       var newsrc = $("#imgManipulated img").attr("src",random);
+      $('figcaption').replaceWith($('<figcaption><em>'+ alt + '</em><br>' + title + '</figcaption>'))
   });
 }); 
