@@ -3,7 +3,6 @@ var jsonImages = '[{"id":22,"title":"View of Cologne","description":"View of Col
 var images = JSON.parse(jsonImages);
 
 $(document).ready(function() {
- 
 for (var i = 0; i<images.length; i++)
 {
 var img= document.createElement('img');
@@ -12,13 +11,9 @@ img.src = imgPath;
 img.alt = images[i].description;
 $('ul.gallery')[0].appendChild(img);
 }
-$(function(){	
-
-			
+$(function(){			
   $('.gallery img').on('mouseenter',	function(e)	{
-  
 	var alt = $(this).attr('alt');
-    
   	var display;
   	var j =0;
   	while(j<images.length){
@@ -27,7 +22,6 @@ $(function(){
   		break;
   	}
   	j++;
-
   }	
  var src = $(this).attr('src');								
  var newsrc	= src.replace("square","medium");
@@ -36,8 +30,20 @@ $(function(){
  var caption =  $('<p>'	+	display	+	'</p>');
  preview.append(image);
  preview.append(caption);
+ $('body').append(preview);
  $(this).addClass("gray");
  $("#preview").fadeIn(1000);
-});
-});
+ $(".gallery img").on("mouseleave", removePreview);
+ $(".gallery img").on("mousemove", movePreview);
+    });
+  });
+function removePreview() {
+  $(this).removeClass("gray");
+  $("#preview").remove();               
+}
+function movePreview(e) {
+   $("#preview")
+   .css("top", (e.pageY - 10) + "px")
+   .css("left", (e.pageX + 30) + "px");  
+}
 });
