@@ -2,4 +2,14 @@ var jsonImages = '[{"id":22,"title":"View of Cologne","description":"View of Col
 
 var images = JSON.parse(jsonImages);
 
-
+$(document).ready(function() {
+ 
+for (var i = 0; i<images.length; i++)
+{
+var img= document.createElement('img');
+var imgPath = 'images/square/' +images[i].path;
+img.src = imgPath;
+img.alt = images[i].description;
+$('ul.gallery')[0].appendChild(img);
+}
+})
