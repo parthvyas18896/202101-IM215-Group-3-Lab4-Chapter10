@@ -13,10 +13,31 @@ img.alt = images[i].description;
 $('ul.gallery')[0].appendChild(img);
 }
 $(function(){	
+
 			
   $('.gallery img').on('mouseenter',	function(e)	{
-  $(this).addClass("gray");
+  
+	var alt = $(this).attr('alt');
+    
+  	var display;
+  	var j =0;
+  	while(j<images.length){
+  	if(alt == images[j].description){
+  		display = images[j].title+'<br/>'+images[j].city+', '+images[j].country+' [' + images[j].taken+']'; 
+  		break;
+  	}
+  	j++;
 
+  }	
+ var src = $(this).attr('src');								
+ var newsrc	= src.replace("square","medium");
+ var preview = $('<div id="preview"></div>');
+ var image =  $('<img src="' + newsrc +	'">');
+ var caption =  $('<p>'	+	display	+	'</p>');
+ preview.append(image);
+ preview.append(caption);
+ $(this).addClass("gray");
+ $("#preview").fadeIn(1000);
 });
 });
 });
