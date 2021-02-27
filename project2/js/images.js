@@ -12,4 +12,11 @@ img.src = imgPath;
 img.alt = images[i].description;
 $('ul.gallery')[0].appendChild(img);
 }
-})
+$(function(){	
+			
+  $('.gallery img').on('mouseenter',	function(e)	{
+  $(this).addClass("gray");
+
+});
+});
+});
